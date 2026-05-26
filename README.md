@@ -12,17 +12,11 @@ Android Studio(Min.required Giraffe)
 ## ALGORITHM:
 
 Step 1: Open Android Stdio and then click on File -> New -> New project.
-
 Step 2: Then type the Application name as proximitysensor and click Next. 
-
 Step 3: Then select the Minimum SDK as shown below and click Next.
-
-Step 4: Then select the Empty Activity and click Next. Finally click Finish.
-
+Step 4:Then select the Empty Activity and click Next. Finally click Finish.
 Step 5: Design layout in activity_main.xml.
-
 Step 6: Display process of proximitysensor in android mobile devices.
-
 Step 7: Save and run the application.
 
 ## PROGRAM:
@@ -36,7 +30,6 @@ Registeration Number : 212223220098
 ### Main Activity:
 ```java
 package com.example.pmdex_05;
-
 import android.content.Context;
 import android.graphics.Color;
 import android.hardware.Sensor;
@@ -46,17 +39,13 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
 import java.util.Locale;
-
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
-
     private SensorManager sensorManager;
     private Sensor proximitySensor;
     private TextView proximityStatus;
@@ -64,24 +53,20 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private TextView maxRangeText;
     private TextView sensorAvailableText;
     private View circleContainer;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        
         proximityStatus = findViewById(R.id.proximityStatus);
         distanceText = findViewById(R.id.distanceText);
         maxRangeText = findViewById(R.id.maxRangeText);
         sensorAvailableText = findViewById(R.id.sensorAvailableText);
         circleContainer = findViewById(R.id.circleContainer);
-        
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         if (sensorManager != null) {
             proximitySensor = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
         }
-
         if (proximitySensor != null) {
             sensorAvailableText.setText("Sensor: Available ✓");
             maxRangeText.setText(String.format(Locale.getDefault(), "Max Range: %.1f cm", proximitySensor.getMaximumRange()));
@@ -91,14 +76,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             proximityStatus.setText("N/A");
             circleContainer.setVisibility(View.INVISIBLE);
         }
-
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
     }
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -106,7 +89,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             sensorManager.registerListener(this, proximitySensor, SensorManager.SENSOR_DELAY_NORMAL);
         }
     }
-
     @Override
     protected void onPause() {
         super.onPause();
@@ -114,7 +96,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             sensorManager.unregisterListener(this);
         }
     }
-
     @Override
     public void onSensorChanged(SensorEvent event) {
         if (event.sensor.getType() == Sensor.TYPE_PROXIMITY) {
@@ -130,7 +111,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             }
         }
     }
-
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
         // Not used
@@ -148,7 +128,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     android:layout_height="match_parent"
     android:background="#121212"
     tools:context=".MainActivity">
-
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
@@ -171,7 +150,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title">
-
         <TextView
             android:id="@+id/proximityStatus"
             android:layout_width="wrap_content"
@@ -182,7 +160,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             android:textSize="32sp"
             android:textStyle="bold" />
     </FrameLayout>
-
     <TextView
         android:id="@+id/distanceText"
         android:layout_width="wrap_content"
@@ -194,7 +171,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         app:layout_constraintBottom_toTopOf="@+id/maxRangeText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
         android:id="@+id/maxRangeText"
         android:layout_width="wrap_content"
@@ -206,7 +182,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         app:layout_constraintBottom_toTopOf="@+id/sensorAvailableText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
         android:id="@+id/sensorAvailableText"
         android:layout_width="wrap_content"
@@ -218,18 +193,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
 ```
-
 ## OUTPUT
 <img width="1919" height="1074" alt="image" src="https://github.com/user-attachments/assets/ae060ec7-cb08-4cf9-a5f5-0a39db87c0b9" />
 <img width="1917" height="1076" alt="image" src="https://github.com/user-attachments/assets/8ef637ca-c3c4-41a7-81cd-9e9679d0dcc0" />
-
-
-
-
-
-
 ## RESULT
 Thus a Simple Android Application to display the details of proximity sensor using sensor manager in Android Studio is developed and executed successfully.
