@@ -198,5 +198,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 ## OUTPUT
 <img width="1919" height="1074" alt="image" src="https://github.com/user-attachments/assets/ae060ec7-cb08-4cf9-a5f5-0a39db87c0b9" />
 <img width="1917" height="1076" alt="image" src="https://github.com/user-attachments/assets/8ef637ca-c3c4-41a7-81cd-9e9679d0dcc0" />
+
 ## RESULT
 Thus a Simple Android Application to display the details of proximity sensor using sensor manager in Android Studio is developed and executed successfully.
